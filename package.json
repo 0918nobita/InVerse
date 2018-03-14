@@ -1,0 +1,25 @@
+{
+  "name": "inversec",
+  "version": "1.0.0",
+  "description": "InVerse is a new programming language in which you can write source code upside-down.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0918nobita/InVerse.git"
+  },
+  "keywords": [
+    "transpiler"
+  ],
+  "author": "0918nobita",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0918nobita/InVerse/issues"
+  },
+  "homepage": "https://github.com/0918nobita/InVerse#readme",
+  "dependencies": {
+    "npm": "^5.7.1"
+  }
+}
