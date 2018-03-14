@@ -1,2 +1,6 @@
 node_modules/
 /dist/bundle.js
+
+*.o
+*.hi
+hello_you
