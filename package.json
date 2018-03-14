@@ -6,6 +6,7 @@
   "scripts": {
     "debug": "webpack",
     "release": "webpack --env.production",
+    "server": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
