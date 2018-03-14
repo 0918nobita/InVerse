@@ -4,6 +4,7 @@
   "description": "InVerse is a new programming language in which you can write source code upside-down.",
   "main": "index.js",
   "scripts": {
+    "start": "node ./dist/bundle.js",
     "debug": "webpack",
     "release": "webpack --env.production",
     "server": "webpack-dev-server",
