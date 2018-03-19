@@ -1,6 +1,3 @@
-node_modules/
-/dist/bundle.js
-
-*.o
-*.hi
-hello_you
+.stack-work/
+InVerse.cabal
+*~

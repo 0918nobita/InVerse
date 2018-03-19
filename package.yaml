@@ -1,0 +1,44 @@
+name:                InVerse
+version:             0.1.0.0
+github:              "0918nobita/InVerse"
+license:             MIT
+author:              "Author name here"
+maintainer:          "nobita.0918@gmail.com"
+copyright:           "2018 0918nobita"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+synopsis:            "InVerse is a new programming language in which you can write source code upside-down."
+category:            "language-processor"
+
+description:         Please see the README on Github at <https://github.com/0918nobita/InVerse#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  InVerse-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - InVerse
+
+tests:
+  InVerse-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - InVerse
