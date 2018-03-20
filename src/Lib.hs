@@ -37,6 +37,19 @@ data LispVal = Atom String         -- アトムを示す文字列を格納する
     | String String                -- Haskell の文字列を保持する
     | Bool Bool                    -- Haskell の真偽値を保持する
 
+-- コンストラクタと型は別々の名前空間を持つため、String というコンストラクタと String という型の両方を併存させることが可能
+-- 型とコンストラクタタグは常に大文字から始まる
+
+-- これらの型を持つ値を作るパーサ関数をいくつか追加する
+-- 文字列は、二重引用符で始まり、それに二重引用符以外の文字が0個以上続き、二重引用符で閉じられる
+
+parseString :: Parser LispVal
+parseString = do
+    char '"'
+    x <- many (noneOf "\"")
+    char '""
+    return $ String x
+
 someFunc :: IO ()
 someFunc = do
     args <- getArgs
