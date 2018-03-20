@@ -47,7 +47,7 @@ parseString :: Parser LispVal
 parseString = do
     char '"'
     x <- many (noneOf "\"")
-    char '""
+    char '"'
     return $ String x
 
 parseAtom :: Parser LispVal
