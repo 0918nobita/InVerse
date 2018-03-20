@@ -1,3 +1,9 @@
+## oneOf
+
+```haskell
+oneOf :: Stream s m Char => [Char] -> ParsecT s u m Char
+```
+
 ## parse
 
 ```haskell

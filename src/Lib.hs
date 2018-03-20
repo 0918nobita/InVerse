@@ -6,8 +6,7 @@ import System.Environment
 import Text.ParserCombinators.Parsec hiding (spaces)
 
 -- Parser モナド ( 隠蔽されている「追加情報」は入力ストリーム、バックトラックの記録、first と follow 集合など )
--- oneOf ::  Stream s m Char => [Char] -> ParsecT s u m Char
---     引数で与えられた文字列中のどれか一文字を認識する ( パースされた文字を返す )
+-- oneOf : 引数で与えられた文字列中のどれか一文字を認識する ( パースされた文字を返す )
 symbol :: Parser Char
 symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 
