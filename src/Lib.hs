@@ -26,6 +26,17 @@ readExpr input = case parse (spaces >> symbol) "lisp" input of
 spaces :: Parser ()
 spaces = skipMany1 space
 
+-- どんな値も保持できるデータ型を定義する
+-- LispVal 型変数が持つことができる値の集合を表す
+-- 選択肢のそれぞれは、コンストラクタのタグとそのコンストラクタが持つことのできるデータ型を含む
+
+data LispVal = Atom String         -- アトムを示す文字列を格納する
+    | List [LispVal]               -- 他の LispVal のリストを保持する ( proper リスト )
+    | DottedList [LispVal] LispVal -- Scheme の ( a b . c ) を表す ( improper リスト )
+    | Number Integer               -- Haskell の整数を保持する
+    | String String                -- Haskell の文字列を保持する
+    | Bool Bool                    -- Haskell の真偽値を保持する
+
 someFunc :: IO ()
 someFunc = do
     args <- getArgs
