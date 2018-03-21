@@ -36,6 +36,7 @@ data LispVal = Atom String         -- アトムを示す文字列を格納する
     | Number Integer               -- Haskell の整数を保持する
     | String String                -- Haskell の文字列を保持する
     | Bool Bool                    -- Haskell の真偽値を保持する
+    deriving (Show)
 
 -- コンストラクタと型は別々の名前空間を持つため、String というコンストラクタと String という型の両方を併存させることが可能
 -- 型とコンストラクタタグは常に大文字から始まる
