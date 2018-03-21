@@ -61,10 +61,19 @@ parseAtom = do
         "#f" -> Bool False
         _    -> Atom atom
 
+-- (>>=) :: Monad m => m a -> (a -> m b) -> m b
 -- Number . read :: String -> LispVal
 -- many1 digit :: Parser String
 parseNumber :: Parser LispVal
-parseNumber = liftM (Number . read) $ many1 digit
+-- parseNumber = liftM (Number . read) $ many1 digit
+
+-- parseNumber = Number . read <$> many1 digit
+
+-- parseNumber = do
+--     str <- many1 digit
+--     return $ (Number . read) $ str
+
+parseNumber = many1 digit >>= return . Number . read
 
 parseExpr :: Parser LispVal
 parseExpr = parseAtom <|> parseString <|> parseNumber
