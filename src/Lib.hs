@@ -17,7 +17,7 @@ symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 -- parse は、パースした結果の値、またはエラーを表す Either データ型を返す
 --     Left: エラー, Right: 通常の値
 readExpr :: String -> String
-readExpr input = case parse (spaces >> symbol) "lisp" input of
+readExpr input = case parse parseExpr "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
 
@@ -64,6 +64,9 @@ parseAtom = do
 -- many1 digit :: Parser String
 parseNumber :: Parser LispVal
 parseNumber = liftM (Number . read) $ many1 digit
+
+parseExpr :: Parser LispVal
+parseExpr = parseAtom <|> parseString <|> parseNumber
 
 someFunc :: IO ()
 someFunc = do
