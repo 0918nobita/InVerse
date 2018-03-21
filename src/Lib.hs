@@ -60,7 +60,8 @@ parseAtom = do
         "#f" -> Bool False
         _    -> Atom atom
 
-
+-- Number . read :: String -> LispVal
+-- many1 digit :: Parser String
 parseNumber :: Parser LispVal
 parseNumber = liftM (Number . read) $ many1 digit
 
