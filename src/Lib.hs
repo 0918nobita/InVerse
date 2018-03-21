@@ -47,7 +47,7 @@ data LispVal = Atom String         -- アトムを示す文字列を格納する
 parseString :: Parser LispVal
 parseString = do
     char '"'
-    x <- many (noneOf "\"")
+    x <- string "\\\"" <|> (many $ noneOf "\"")
     char '"'
     return $ String x
 
