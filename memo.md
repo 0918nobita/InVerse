@@ -1,3 +1,11 @@
+## Control.Monad.liftM
+
+```haskell
+liftM :: Monad m => (a1 -> r) -> m a1 -> m r
+```
+
+``a1`` を引数として受け取り ``r`` を返す関数を、モナド ( ``m a1`` ) に適用する。
+
 ## oneOf
 
 ```haskell
