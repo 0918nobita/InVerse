@@ -19,7 +19,7 @@ symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 readExpr :: String -> String
 readExpr input = case parse parseExpr "lisp" input of
     Left err -> "No match: " ++ show err
-    Right val -> "Found value"
+    Right val -> "Found value ( " ++ show val ++ " )"
 
 -- どんな数のスペースも認識するパーサ
 -- Parse アクション space を Parser アクション skipMany1 に渡して一つ以上のスペースを認識するパーサを作る
