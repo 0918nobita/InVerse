@@ -44,12 +44,24 @@ data LispVal = Atom String         -- アトムを示す文字列を格納する
 -- これらの型を持つ値を作るパーサ関数をいくつか追加する
 -- 文字列は、二重引用符で始まり、それに二重引用符以外の文字が0個以上続き、二重引用符で閉じられる
 
+escape :: Parser String
+escape = do
+    d <- char '\\'
+    c <- oneOf "\\\"0nrvtbf"
+    return [d, c]
+
+nonEscape :: Parser Char
+nonEscape = noneOf "\\\"\0\n\r\v\t\b\f"
+
+character :: Parser String
+character = return <$> nonEscape <|> escape
+
 parseString :: Parser LispVal
 parseString = do
     char '"'
-    x <- string "\\\"" <|> (many $ noneOf "\"")
+    strings <- many character
     char '"'
-    return $ String x
+    return $ String $ concat strings
 
 parseAtom :: Parser LispVal
 parseAtom = do
