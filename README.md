@@ -11,83 +11,41 @@ InVerse is a new programming language in which you can write source code upside-
 
 それでもエラーが発生しなかった場合、処理系はインタプリタとして下から実行して行きます。
 
-サンプル１：
+サンプル１：  
+直方体の面積を求める
 
 ```
-f x
-f = println
-x = "Hello, world"
+main = f 2 3 4
+  f w h d = bottom * d
+    bottom = width * height
+    height = h
+    width = w
 ```
 
 実行結果：
 
 ```
-Hello, world
+24
 ```
+
+インデントを 1 つ増やすごとに、ローカル環境が用意される
 
 ----
 
 サンプル２：
 
 ```
-f x
-f a b
+main = a + b
+  a = f 2
+  b = f 3 4
 ```
 
 実行結果：
 
 ```
-error : 未完成 (f, x, a, b)
-	1. f は引数を 2 個以上取る関数
-	2. x, a は関数 f の第 1 引数に適合
-	3. b は関数 f の第 2 引数に適合
-```
-
-----
-
-サンプル３： 
-
-```
-f x
-```
-
-実行結果：
-
-```
-error : 未完成 (f, x)
-	1. f は引数を 1 つだけ取る関数
-	2. x は関数 f の第 1 引数の型に適合
-```
-
-----
-
-サンプル４：
-
-```
-println $ a + b
-b = 2
-a = '1'
-```
-
-実行結果：
-
-※ 中置関数 + の型シグネチャは ``Num a => a -> a -> a``
-
-```
-error : 型の不適合
-	1. a の型は Char であり型クラス Num のインスタンスではない
-```
-
-サンプル５：
-
-```
-a = 1
-a :: String
-```
-
-実行結果：
-
-```
-error : 型の不適合
-	1. a の型は Num p => p であり String ではない
+infered : a は Int 型
+infered : b は Int 型
+infered : f 2 は Int 型
+infered : f は Int -> Int 型
+contradiction : f 3 4 は「f は Int -> Int 型」に矛盾
 ```
