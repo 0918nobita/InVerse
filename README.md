@@ -47,5 +47,13 @@ infered : a は Int 型
 infered : b は Int 型
 infered : f 2 は Int 型
 infered : f は Int -> Int 型
-contradiction : f 3 4 は「f は Int -> Int 型」に矛盾
+contradiction : f 3 4 は `f は Int -> Int 型` に矛盾
+```
+
+---
+サンプル３：
+
+```
+main# = 2 + first$
+  first$ = race (interval 2000) (interval 3000)
 ```
